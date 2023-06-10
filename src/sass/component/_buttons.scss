@@ -1,0 +1,27 @@
+.item-search-box {
+  position: relative;
+  display: inline-block;
+  input {
+    width: 173px;
+    height: 34px;
+    outline: none;
+    padding-inline: 15px 32px;
+    border: 1px solid rgba(90, 90, 90, 0.5);
+    border-radius: 46px;
+    color: grey;
+    font-family: var(--sitefont);
+  }
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 8px;
+    top: 55%;
+    transform: translateY(-50%);
+
+    img {
+      width: 16px;
+    }
+  }
+}

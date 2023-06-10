@@ -1,0 +1,37 @@
+.subscription-plan{
+     position: relative;
+     height: 100vh;   
+        table{   
+        border-spacing: 35px 40px;
+        text-align: center;
+        margin-inline: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 921px;
+        }
+        th{
+            font-size: 1.2rem;
+            color:#5A5A5A;
+            font-family: var(--sitefont);
+            font-weight: 500;
+        }
+        button{
+            background-color: var(--netflix-primary);
+            color: var(--netflix-log-heading);
+            font-size: 1.3rem;
+            font-family: var(--sitefont);
+            font-weight: 500;
+            border: none;
+            width: 152px;
+            padding-block: 20px;
+            border-radius: 5px;
+        }
+        td{
+            font-size: 1.2rem;
+            font-family: var(--sitefont);
+            font-weight: 400;
+            color:#5A5A5A;
+        }
+}

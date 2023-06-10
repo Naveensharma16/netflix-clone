@@ -1,0 +1,16 @@
+.content-filter{
+    ul{
+      display: flex;
+      column-gap: 50px;
+      list-style-type: none;
+    
+      li{
+        color: var(--netflix-log-heading);
+        font-size: 1rem;
+        font-family: var(--sitefont);
+      }
+      .active{
+        color: var(--netflix-primary);
+      }
+    }
+}

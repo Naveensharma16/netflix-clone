@@ -1,0 +1,81 @@
+.profile-manager-background{
+    background-image: url("../../../public/assets/getinbg.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.profile-set-box{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    padding: 20px 25px;
+    width: 355px;
+    min-height:360px;
+    h1{
+        font-size: 1.5rem;
+        font-family: var(--sitefont);
+        font-weight: 500;
+        color: var(--netflix-log-heading);
+        letter-spacing: 3px;
+    }
+    .existing-profile{
+         display: flex;
+         justify-content: space-between;
+         flex-wrap: wrap;
+         row-gap: 50px;
+         column-gap: 20px;
+         .single-profile{
+            width: 65px;
+            height: 65px;
+            cursor: pointer;
+            .single-profile-edit{
+                background-color: var(--netflix-primary);
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: inherit;
+            }
+            p{
+                color: var(--netflix-log-heading);
+                font-family: var(--sitefont);
+                font-weight: 500;
+                text-align: center;
+                margin-top: 5px;
+            }
+         }
+    }
+
+    .add-profile{
+        text-align: center;
+        margin-top: 50px;
+        button{
+            background-color: var(--netflix-primary);
+            border-radius: 50%;
+            width: 47px;
+            height: 47px;
+            border: 1px solid #fff;
+        }
+    }
+    .profile-edit-complete{
+        text-align: center;
+        margin-top: 50px;
+        button{
+            background-color: var(--netflix-primary);
+            width: 138px;
+            height: 42px;
+            border: 1px solid #fff;
+            color: #fff;
+              font-family: var(--sitefont);
+            font-weight: 500;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 5px;
+        }
+    }
+}

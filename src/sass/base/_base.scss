@@ -1,0 +1,23 @@
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: var(-sitefont);
+}
+
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+body{
+   padding: 0;
+   margin: 0;
+   background-color: #07090a;
+}
+button{
+    cursor: pointer;
+}
+
+.container{
+    width: 90%;
+    margin-inline: auto;
+}

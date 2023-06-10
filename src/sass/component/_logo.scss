@@ -1,0 +1,12 @@
+.brand-fix-logo{
+    width: 80px;
+    height: 30px;
+    position: fixed;
+    top: 28px;
+    left: 50px;
+    z-index: 10;
+    img{
+        width: 100%;
+        height: auto;
+    }
+}

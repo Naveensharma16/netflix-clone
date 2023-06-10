@@ -1,0 +1,30 @@
+.movies-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+  .item {
+    width: 24%;
+    cursor: pointer;
+  }
+}
+
+.single-category-movie {
+  .more-movie-carousel {
+    h3 {
+      span {
+        opacity: 1 !important;
+        text-transform: capitalize;
+      }
+      &:hover {
+        span {
+          animation-name: unset !important;
+          animation-duration: unset !important;
+          display: inline-flex;
+          opacity: 1;
+          transition: unset !important;
+        }
+      }
+    }
+  }
+}

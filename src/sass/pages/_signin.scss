@@ -1,0 +1,82 @@
+.signin-background{
+    background-image: url("../../../public/assets/getinbg.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+.auth-form-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 391px;
+    height:470px;
+}
+
+.signup-form{
+    h1{
+        font-size: 2rem;
+        font-family: var(--sitefont);
+        font-weight: 500;
+        color: var(--netflix-log-heading);
+    }
+    form{
+        text-align: center;
+    }
+    input{
+        display: block;
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid #BBBBBB;
+        outline: none;
+        color: var(--netflix-log-heading);
+        font-family: var(--sitefont);
+        font-weight: 300;
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 30px;
+    }
+    p.forgot-pass-link{
+        text-align: right;
+        margin-top: 5px;
+        a{
+            color: var(--netflix-log-heading);
+            font-family: var(--sitefont);
+            font-weight: 300;
+            font-size: 0.8rem;
+        }
+    }
+    ::placeholder{
+        text-transform: capitalize;
+    }
+    input[type=submit]{
+        background-color: var(--netflix-primary);
+        display: inline-block;
+        border: 1px solid #fff;
+        font-family: var(--sitefont);
+        font-weight: 500;
+        font-size: 0.9rem;
+        width: 45%;
+    }
+
+    .existing-user-link{
+        margin-top: 25px;
+        p{
+            font-family: var(--sitefont);
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--netflix-log-heading);
+            a{
+                color: var(--netflix-log-heading);
+                font-weight: 400;
+            }
+        }
+    }
+}
