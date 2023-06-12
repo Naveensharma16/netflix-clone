@@ -55,11 +55,17 @@ import showmodal from "../contexts/showmodal";
 
 import { createPortal } from "react-dom";
 
-import Skeleton from "../components/Skeleton";
-import ReactPlayer from "react-player";
-import { movieVideoId } from "../api/movievideoid";
 import { Link } from "react-router-dom";
-import { bannerMovies } from "../api/bannerMovies";
+import { getBannerMovies } from "../api/bannerMovies";
+import { getThirllerMovies } from "../api/thrillermovies";
+import { getRomanceMovies } from "../api/romancemovies";
+import { getDocumentryMovies } from "../api/documentrymovies";
+import { getsifiMovies } from "../api/sifimovies";
+import { getMysteryMovies } from "../api/mysterymovies";
+import BannerSkeleton from "../components/BannerSkeleton";
+
+import hovermoviecontext from "../contexts/hovermoviecontext";
+import Footer from "../layout/footer";
 
 const Home = () => {
   // initial state for the movie reducer
@@ -71,6 +77,11 @@ const Home = () => {
     recommendMovies: [],
     continueMovies: [],
     bannerMovies: [],
+    thrillerMovies: [],
+    romanceMovies: [],
+    documentryMovies: [],
+    sifiMovies: [],
+    mysteryMovies: [],
   };
 
   const moviesReducer = (state, action) => {
@@ -110,6 +121,31 @@ const Home = () => {
           ...state,
           bannerMovies: action.payload,
         };
+      case "ADD_THRILLER_MOVIES":
+        return {
+          ...state,
+          thrillerMovies: action.payload,
+        };
+      case "ADD_ROMANCE_MOVIES":
+        return {
+          ...state,
+          romanceMovies: action.payload,
+        };
+      case "ADD_DOCUMENTRY_MOVIES":
+        return {
+          ...state,
+          documentryMovies: action.payload,
+        };
+      case "ADD_SIFI_MOVIES":
+        return {
+          ...state,
+          sifiMovies: action.payload,
+        };
+      case "ADD_MYSTERY_MOVIES":
+        return {
+          ...state,
+          mysteryMovies: action.payload,
+        };
       default:
         return state;
     }
@@ -119,11 +155,12 @@ const Home = () => {
 
   // using the modal provider to access the value of modal Provider
   const popupModal = useContext(showmodal);
+  const moviecontext = useContext(hovermoviecontext);
 
   // useeffect hook is called with empty dependencies so they are called only once when component rendered
   useEffect(() => {
     // function to fetch the banner image
-    bannerMovies().then((result) => {
+    getBannerMovies().then((result) => {
       dispatch({ type: "ADD_BANNER_MOVIES", payload: result });
     });
 
@@ -155,6 +192,31 @@ const Home = () => {
       dispatch({ type: "ADD_RECOMMEND_MOVIES", payload: result });
       dispatch({ type: "ADD_CONTINUE_MOVIES", payload: result });
     });
+
+    // calling thriller movies function promise
+    getThirllerMovies().then((result) => {
+      dispatch({ type: "ADD_THRILLER_MOVIES", payload: result });
+    });
+
+    // calling romace movies function promise
+    getRomanceMovies().then((result) => {
+      dispatch({ type: "ADD_ROMANCE_MOVIES", payload: result });
+    });
+
+    // calling documentry movies function promise
+    getDocumentryMovies().then((result) => {
+      dispatch({ type: "ADD_DOCUMENTRY_MOVIES", payload: result });
+    });
+
+    // calling sifi movies function promise
+    getsifiMovies().then((result) => {
+      dispatch({ type: "ADD_SIFI_MOVIES", payload: result });
+    });
+
+    // calling mystery movies function promise
+    getMysteryMovies().then((result) => {
+      dispatch({ type: "ADD_MYSTERY_MOVIES", payload: result });
+    });
   }, []);
 
   // setting for single genera movie slider
@@ -185,50 +247,65 @@ const Home = () => {
           <SidebarMenu />
         </div>
 
-        <div className="main-content-box">
+        <div
+          className="main-content-box"
+          onMouseLeave={() => {
+            setTimeout(() => {
+              moviecontext.updateHoverMovie({
+                name: "",
+                url: "",
+                generas: [],
+                leftpos: "unset",
+                toppos: "unset",
+              });
+            }, 300);
+          }}
+        >
           {/* called the hover movie provider component as parent component so we can use the provider value in all the children */}
-          <HoverMovieProvider>
-            <div className="main-header">
-              <div className="movie-type-filter">
-                <ContentFilterType />
-              </div>
-              <div className="current-user-profile">
-                <CurrentProfile />
-              </div>
+          <div className="main-header">
+            <div className="movie-type-filter">
+              <ContentFilterType />
             </div>
+            <div className="current-user-profile">
+              <CurrentProfile />
+            </div>
+          </div>
 
-            <div className="top-movies">
-              <Slider {...mainSliderSetting}>
-                {moviestate.bannerMovies.length > 0 &&
-                  moviestate.bannerMovies.map((data) => {
-                    return (
-                      <div className="item" key={data.id}>
-                        <img src={data.img} alt="" />
+          <div className="top-movies">
+            <Slider {...mainSliderSetting}>
+              {moviestate.bannerMovies.length > 0 ? (
+                moviestate.bannerMovies.map((data) => {
+                  return (
+                    <div className="item" key={data.id}>
+                      <img src={data.img} alt="" />
 
-                        <div className="movie-data">
-                          <h3>{data.name}</h3>
-                          <div className="inner-flex">
-                            <Link
-                              className="watch-now"
-                              to="/player"
-                              state={data.id}
-                            >
-                              Watch
-                            </Link>
+                      <div className="movie-data">
+                        <h3>{data.name}</h3>
+                        <div className="inner-flex">
+                          <Link
+                            className="watch-now"
+                            to="/player"
+                            state={data.id}
+                          >
+                            Watch
+                          </Link>
 
-                            <button className="add-wishlist">
-                              <img src={plus} alt="" />
-                            </button>
-                          </div>
+                          <button className="add-wishlist">
+                            <img src={plus} alt="" />
+                          </button>
                         </div>
                       </div>
-                    );
-                  })}
-              </Slider>
-            </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <BannerSkeleton />
+              )}
+            </Slider>
+          </div>
 
-            <div className="movie-type-outer">
-              <div className="continue-watching more-movie-carousel">
+          <div className="movie-type-outer">
+            {/* <div className="continue-watching more-movie-carousel">
                 <h3>Continue Watching</h3>
 
                 {moviestate.continueMovies.length > 0 ? (
@@ -250,59 +327,110 @@ const Home = () => {
                 ) : (
                   <Skeleton />
                 )}
-              </div>
+              </div> */}
 
-              {/* recommended movie component */}
-              <SingleGenraType
-                heading="Recommended To You"
-                url="recommended"
-                movies={moviestate.recommendMovies}
-                settings={settings}
-              />
-              {/* recommended movie component */}
+            <SingleGenraType
+              heading="Top rated movies"
+              url="toprated"
+              movies={moviestate.bannerMovies}
+              settings={settings}
+            />
 
-              {/* poplular hollywood movie component */}
-              <SingleGenraType
-                heading="Popular Hollywood Movies"
-                url="popular"
-                movies={moviestate.hollywoodMovies}
-                settings={settings}
-              />
-              {/* poplular hollywood movie component */}
+            {/* recommended movie component */}
+            <SingleGenraType
+              heading="Recommended To You"
+              url="recommended"
+              movies={moviestate.recommendMovies}
+              settings={settings}
+            />
+            {/* recommended movie component */}
 
-              {/* Animation movie component */}
-              <SingleGenraType
-                heading="Animation Movies"
-                url="animation"
-                movies={moviestate.animatedMovies}
-                settings={settings}
-              />
-              {/* Animation  movie component */}
+            {/* poplular hollywood movie component */}
+            <SingleGenraType
+              heading="Popular Hollywood Movies"
+              url="popular"
+              movies={moviestate.hollywoodMovies}
+              settings={settings}
+            />
+            {/* poplular hollywood movie component */}
 
-              {/* Horror movie component */}
-              <SingleGenraType
-                heading="Horror Movies"
-                url="horror"
-                movies={moviestate.horrorMovies}
-                settings={settings}
-              />
-              {/* Horror  movie component */}
+            {/* Animation movie component */}
+            <SingleGenraType
+              heading="Animation Movies"
+              url="animation"
+              movies={moviestate.animatedMovies}
+              settings={settings}
+            />
+            {/* Animation  movie component */}
 
-              {/* History movie component */}
-              <SingleGenraType
-                heading="History Movies"
-                url="history"
-                movies={moviestate.historyMovies}
-                settings={settings}
-              />
-              {/* History movie component */}
+            {/* Horror movie component */}
+            <SingleGenraType
+              heading="Horror Movies"
+              url="horror"
+              movies={moviestate.horrorMovies}
+              settings={settings}
+            />
+            {/* Horror  movie component */}
 
-              {/* movie zoombox component is called here which will be seen if there will be any data in hover movie context */}
-              <div className="movie-hover-box">
-                <MovieZoomBox />
-              </div>
+            {/* History movie component */}
+            <SingleGenraType
+              heading="History Movies"
+              url="history"
+              movies={moviestate.historyMovies}
+              settings={settings}
+            />
+            {/* History movie component */}
+
+            {/* Thriller movie component */}
+            <SingleGenraType
+              heading="Thriller Movies"
+              url="thriller"
+              movies={moviestate.thrillerMovies}
+              settings={settings}
+            />
+            {/* Thriller movie component */}
+
+            {/* Romance movie component */}
+            <SingleGenraType
+              heading="Romance Movies"
+              url="romance"
+              movies={moviestate.romanceMovies}
+              settings={settings}
+            />
+            {/* Romance movie component */}
+
+            {/* Documentry movie component */}
+            <SingleGenraType
+              heading="Documentry Movies"
+              url="documentry"
+              movies={moviestate.documentryMovies}
+              settings={settings}
+            />
+            {/* Documentry movie component */}
+
+            {/* sifi movie component */}
+            <SingleGenraType
+              heading="Sifi Movies"
+              url="sifi"
+              movies={moviestate.sifiMovies}
+              settings={settings}
+            />
+            {/* sifi movie component */}
+
+            {/* mystery movie component */}
+            <SingleGenraType
+              heading="Mystery Movies"
+              url="mystery"
+              movies={moviestate.mysteryMovies}
+              settings={settings}
+            />
+            {/* mystery movie component */}
+
+            {/* movie zoombox component is called here which will be seen if there will be any data in hover movie context */}
+            <div className="movie-hover-box">
+              <MovieZoomBox />
             </div>
-          </HoverMovieProvider>
+          </div>
         </div>
 
         <div className="right-search-sidebar">
@@ -323,6 +451,7 @@ const Home = () => {
 
       {/* if the modal context have true value it will create a portal on body */}
       {popupModal.showmodal && createPortal(<ModalContainer />, document.body)}
+      <Footer />
     </>
   );
 };

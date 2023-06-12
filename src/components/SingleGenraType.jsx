@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SingelMovie from "../components/SingelMovie";
 import Slider from "react-slick";
 
@@ -51,18 +51,20 @@ const SingleGenraType = ({ heading, movies, settings, url }) => {
         </Link>
       </h3>
       {/* below code check if movies are loaded and if movies are not loaded show skeleton component */}
-      {movies !== undefined ? (
-        <Slider {...settings}>
-          {movies.map((data, i) => {
-            const moviegeneras = filterGenera(data.generas);
+      {movies.length > 0 ? (
+        <div className="slick-container">
+          <Slider {...settings}>
+            {movies.map((data, i) => {
+              const moviegeneras = filterGenera(data.generas);
 
-            return (
-              <div className="item" key={data.id}>
-                <SingelMovie data={data} moviegeneras={moviegeneras} />
-              </div>
-            );
-          })}
-        </Slider>
+              return (
+                <div className="item" key={data.id}>
+                  <SingelMovie data={data} moviegeneras={moviegeneras} />
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
       ) : (
         <Skeleton />
       )}

@@ -12,27 +12,32 @@ import Plans from "./pages/Plans";
 import ProfileManager from "./pages/ProfileManager";
 import ShowModalProvider from "./providers/ShowModalProvider";
 import Player from "./pages/Player";
+import HoverMovieProvider from "./providers/HoverMovieProvider";
+
+import Footer from "./layout/footer";
 
 function App() {
   return (
     <div className="App">
       {/* show modal provider is used here so we can access its value in all pages */}
-      <ShowModalProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route
-              path="/genera/:generaname"
-              element={<SingleGeneraMovies />}
-            />
-            <Route path="/plan" element={<Plans />} />
-            <Route path="/profile" element={<ProfileManager />} />
-            <Route path="/player" element={<Player url={""} />} />
-          </Routes>
-        </BrowserRouter>
-      </ShowModalProvider>
+      <HoverMovieProvider>
+        <ShowModalProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route
+                path="/genera/:generaname"
+                element={<SingleGeneraMovies />}
+              />
+              <Route path="/plan" element={<Plans />} />
+              <Route path="/profile" element={<ProfileManager />} />
+              <Route path="/player" element={<Player url={""} />} />
+            </Routes>
+          </BrowserRouter>
+        </ShowModalProvider>
+      </HoverMovieProvider>
     </div>
   );
 }

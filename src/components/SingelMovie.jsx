@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 const SingelMovie = ({ data, moviegeneras, index }) => {
   const hovercontext = useContext(hovermoviecontext);
   const checkparameter = useParams();
-
+  // const [shouldexecute, setshouldexecute] = useState(true);
+  let shouldexecute = true;
   return (
     <div
       onMouseEnter={(event) => {
@@ -20,11 +21,11 @@ const SingelMovie = ({ data, moviegeneras, index }) => {
             .previousSibling?.classList.contains("slick-current");
 
           if (current) {
-            leftPosition = "-1%";
+            leftPosition = "2%";
           } else if (previous) {
-            leftPosition = "33%";
+            leftPosition = "33.5%";
           } else if (!previous) {
-            leftPosition = "67%";
+            leftPosition = "66%";
           }
 
           // below is the updation of hover context we add movie name,url, movie id, and location of the movie hover box that will appear when we hover on a particular movie
@@ -56,6 +57,9 @@ const SingelMovie = ({ data, moviegeneras, index }) => {
             toppos: event.target.closest(".item").offsetTop - 50,
           });
         }
+      }}
+      onMouseLeave={() => {
+        shouldexecute = false;
       }}
     >
       <img src={data.img} alt="" />

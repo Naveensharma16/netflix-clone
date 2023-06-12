@@ -1,0 +1,39 @@
+.footer-wrap {
+  padding: 20vh 0px 0px 0px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    // gap: 40px;
+    max-width: 70%;
+    margin: auto;
+    .col {
+      ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+          margin-bottom: 15px;
+          a {
+            text-decoration: none;
+            color: grey;
+            font-size: 0.8em;
+            font-family: var(--sitefont);
+          }
+        }
+      }
+      p {
+        color: grey;
+        font-size: 0.8em;
+        font-family: var(--sitefont);
+        margin-top: 30px;
+      }
+      #service-code {
+        border: 1px solid grey;
+        color: grey;
+        font-size: 1em;
+        font-family: var(--sitefont);
+        padding: 8px 12px;
+      }
+    }
+  }
+}

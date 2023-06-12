@@ -19,6 +19,11 @@ import { getRecomendedMovie } from "../api/recomendusermovie";
 // function to get popular hollywoodmovies
 import { getPopularMovies } from "../api/popularmovies";
 import { useEffect, useState } from "react";
+import { getsifiMovies } from "../api/sifimovies";
+import { getMysteryMovies } from "../api/mysterymovies";
+import { getDocumentryMovies } from "../api/documentrymovies";
+import { getRomanceMovies } from "../api/romancemovies";
+import { getThirllerMovies } from "../api/thrillermovies";
 // function to get popular hollywoodmovies
 
 export const useFetchGeneraMovies = (genera, page) => {
@@ -66,6 +71,36 @@ export const useFetchGeneraMovies = (genera, page) => {
           });
         }
         break;
+      case "sifi": {
+        const response = getsifiMovies(page);
+        response.then((results) => {
+          setMovies([...movies, ...results]);
+        });
+      }
+      case "mystery": {
+        const response = getMysteryMovies(page);
+        response.then((results) => {
+          setMovies([...movies, ...results]);
+        });
+      }
+      case "documentry": {
+        const response = getDocumentryMovies(page);
+        response.then((results) => {
+          setMovies([...movies, ...results]);
+        });
+      }
+      case "romance": {
+        const response = getRomanceMovies(page);
+        response.then((results) => {
+          setMovies([...movies, ...results]);
+        });
+      }
+      case "thriller": {
+        const response = getThirllerMovies(page);
+        response.then((results) => {
+          setMovies([...movies, ...results]);
+        });
+      }
     }
   }, [page]);
 

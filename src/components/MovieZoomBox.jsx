@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 
 const MovieZoomBox = () => {
   const moviecontext = useContext(hovermoviecontext);
-
   const popupModal = useContext(showmodal);
 
   // random number for like,hour and age

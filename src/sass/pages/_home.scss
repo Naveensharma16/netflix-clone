@@ -5,7 +5,7 @@
   .left-menu-sidebar {
     width: 13%;
     height: 100vh;
-    border-right: 1px solid grey;
+    // border-right: 1px solid grey;
     position: sticky;
     top: 0px;
 
@@ -19,19 +19,20 @@
   }
   .main-content-box {
     width: 70%;
-    padding-inline: 20px;
     padding-block-start: 50px;
     .main-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
+      padding-inline: 20px;
       ul {
         padding-left: 0px;
       }
     }
 
     .top-movies {
+      padding-inline: 20px;
       .slick-slide {
         position: relative;
       }
@@ -130,6 +131,7 @@
     }
 
     .more-movie-carousel {
+      padding-inline: 20px;
       h3 {
         cursor: pointer;
         a {
@@ -181,13 +183,17 @@
     height: 100vh;
     padding-top: 57px;
     padding-left: 15px;
-    border-left: 1px solid grey;
+    // border-left: 1px solid grey;
     position: sticky;
     top: 0px;
     .movies {
       margin-top: 20px;
     }
   }
+}
+
+.slick-container {
+  overflow: hidden;
 }
 
 @keyframes rotate {
