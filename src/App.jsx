@@ -14,8 +14,6 @@ import ShowModalProvider from "./providers/ShowModalProvider";
 import Player from "./pages/Player";
 import HoverMovieProvider from "./providers/HoverMovieProvider";
 
-import Footer from "./layout/footer";
-
 function App() {
   return (
     <div className="App">

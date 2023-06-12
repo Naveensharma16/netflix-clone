@@ -20,9 +20,6 @@ import plus from "../assets/addwatchlist.png";
 // slick slider used in a genera movie slider
 import Slider from "react-slick";
 
-// hover movie provider component
-import HoverMovieProvider from "../providers/HoverMovieProvider";
-
 // function to get the popular movies and top rated movies
 import { getPopularMovies } from "../api/popularmovies";
 import { getTopRatedMovies } from "../api/topratedmovies";
@@ -65,7 +62,7 @@ import { getMysteryMovies } from "../api/mysterymovies";
 import BannerSkeleton from "../components/BannerSkeleton";
 
 import hovermoviecontext from "../contexts/hovermoviecontext";
-import Footer from "../layout/footer";
+import SiteFooter from "../layout/SiteFooter";
 
 const Home = () => {
   // initial state for the movie reducer
@@ -451,7 +448,7 @@ const Home = () => {
 
       {/* if the modal context have true value it will create a portal on body */}
       {popupModal.showmodal && createPortal(<ModalContainer />, document.body)}
-      <Footer />
+      <SiteFooter />
     </>
   );
 };

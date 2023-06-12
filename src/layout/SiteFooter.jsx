@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const SiteFooter = () => {
   return (
     <div className="footer-wrap">
       <div className="container">
@@ -74,4 +74,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default SiteFooter;

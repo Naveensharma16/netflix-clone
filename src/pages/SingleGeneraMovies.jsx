@@ -30,6 +30,7 @@ import { genera } from "../api/genera";
 
 import showmodal from "../contexts/showmodal";
 import ModalContainer from "../modals/ModalContainer";
+import SiteFooter from "../layout/SiteFooter";
 
 const SingleGeneraMovies = () => {
   const { generaname } = useParams();
@@ -208,6 +209,7 @@ const SingleGeneraMovies = () => {
 
       {/* if the modal context have true value it will create a portal on body */}
       {popupModal.showmodal && createPortal(<ModalContainer />, document.body)}
+      <SiteFooter />
     </>
   );
 };
