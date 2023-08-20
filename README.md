@@ -1,8 +1,6 @@
-<h2><a href="https://net-flix-clo-ne.netlify.app/">Demo link</a></h2>
-
 <img src="https://github.com/Naveensharma16/netflix-clone/blob/master/src/assets/netflixhomepage-min.PNG" />
 
-
+<h2><a href="https://net-flix-clo-ne.netlify.app/">Demo link</a></h2>
 
 <h2>Requirement</h2>
 <p>I used TMDB moview api to fetch movies. If you don't already have an account on TMDB, please sign up in order to utilize its free API for accessing movie and TV data.</p>
