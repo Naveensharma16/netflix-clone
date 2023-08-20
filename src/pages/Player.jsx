@@ -8,7 +8,6 @@ const Player = ({ url }) => {
   const [videoId, setVideoId] = useState(0);
   const location = useLocation();
   const propsData = location.state;
-  console.log(propsData);
 
   useEffect(() => {
     movieVideoId(propsData)
@@ -28,6 +27,7 @@ const Player = ({ url }) => {
         height={"100vh"}
         playing={true}
         controls={true}
+        style={{ overflow: "hidden" }}
         config={{
           file: {
             attributes: {

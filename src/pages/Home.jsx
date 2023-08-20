@@ -302,30 +302,6 @@ const Home = () => {
           </div>
 
           <div className="movie-type-outer">
-            {/* <div className="continue-watching more-movie-carousel">
-                <h3>Continue Watching</h3>
-
-                {moviestate.continueMovies.length > 0 ? (
-                  <Slider {...settings}>
-                    {moviestate.continueMovies.map((data, i) => {
-                      return (
-                        <div className="item" key={i}>
-                          <img src={data.img} alt="" />
-                          <div className="progress">
-                            <div
-                              className="completed"
-                              style={{ width: `${data.progress}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </Slider>
-                ) : (
-                  <Skeleton />
-                )}
-              </div> */}
-
             <SingleGenraType
               heading="Top rated movies"
               url="toprated"

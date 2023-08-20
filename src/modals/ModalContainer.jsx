@@ -12,6 +12,7 @@ import play from "../assets/play.png";
 
 import YotubeVideo from "../components/YotubeVideo";
 import { singleMovies } from "../api/singlemovie";
+import { Link } from "react-router-dom";
 
 const ModalContainer = () => {
   const [similarMoviesList, setSimilarMoviesList] = useState(null);
@@ -45,13 +46,16 @@ const ModalContainer = () => {
       .then((result) => {
         const movies = [];
         result.forEach((element) => {
-          movies.push({
-            img: element.backdrop_path,
-            popularity: element.popularity,
-            title: element.title,
-            description: element.overview,
-            id: element.id,
-          });
+          console.log();
+          if (!(element.backdrop_path === null)) {
+            movies.push({
+              img: element.backdrop_path,
+              popularity: element.popularity,
+              title: element.title,
+              description: element.overview,
+              id: element.id,
+            });
+          }
         });
         return movies;
       })
@@ -76,10 +80,13 @@ const ModalContainer = () => {
             <div className="trailer-movie-information">
               <h2>{movieInfo.name}</h2>
               <div className="movie-player">
-                <button id="play">
-                  {" "}
-                  <img src={play} alt="" /> Play
-                </button>
+                <Link to="/player" state={popupModal.movieid}>
+                  <button id="play">
+                    {" "}
+                    <img src={play} alt="" /> Play
+                  </button>
+                </Link>
+
                 <button id="watchlist">
                   <img src={plus} alt="" />
                 </button>
